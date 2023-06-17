@@ -25,3 +25,6 @@ jobs:
     
     - name: List My Repos
       run: gh repo list
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
