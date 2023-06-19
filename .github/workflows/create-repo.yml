@@ -24,7 +24,15 @@ jobs:
     steps:
     
     - name: List My Repos
-      run: gh repo list
+      run: gh repo list --json name,description,visibility
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
+        
+    - name: Create Repo
+      run: |
+        gh create repo created-from-action --private
+        --description "Created From GitHub Actions" --add-readme
+        --license MIT
+        --gitignore Node
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
