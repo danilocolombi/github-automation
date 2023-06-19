@@ -30,9 +30,8 @@ jobs:
         
     - name: Create Repo
       run: |
-        gh repo create created-from-action --private
-        --description "Created From GitHub Actions" --add-readme
-        --license MIT
-        --gitignore Node
+        gh repo create created-from-action --private \
+        --description "Created From GitHub Actions" --add-readme \
+        --license MIT --gitignore Node
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
