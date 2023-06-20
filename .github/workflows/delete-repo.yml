@@ -1,0 +1,6 @@
+name: 'Delete Repo'
+
+on: 
+  workflow_dispatch:
+   inputs:
+   
