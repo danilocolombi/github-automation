@@ -13,13 +13,18 @@ jobs:
     
     steps:
     
-    - name: 'List Repos'
+    - name: 'List Repos Before Delete'
       run: gh repo list
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
     
     - name: 'Delete Repo'
       run: gh repo delete ${{ github.event.inputs.repo-name }} --yes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        
+    - name: 'List Repos After Delete'
+      run: gh repo list
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
    
