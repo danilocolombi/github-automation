@@ -2,7 +2,9 @@ name: 'Delete Repo'
 
 on:
   push:
-    branches: 'main'
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
     inputs:
       repo-name:
