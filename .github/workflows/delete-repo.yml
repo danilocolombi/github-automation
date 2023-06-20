@@ -17,5 +17,9 @@ jobs:
       run: gh repo list
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        
+    
+    - name: 'Delete Repo'
+      run: gh repo delete ${{ github.event.input.repo-name }} --yes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
    
