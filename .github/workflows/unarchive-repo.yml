@@ -1,4 +1,4 @@
-name: 'Archive Repo'
+name: 'Unarchive Repo'
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
         required: true
 
 jobs:
-  archive:
+  unarchive:
     runs-on: ubuntu-latest
     
     steps:
@@ -19,7 +19,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       
-      - name: Archive Repo
+      - name: Unarchive Repo
         run: 'gh repo unarchive ${{ github.event.inputs.repo-name }} --yes'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
