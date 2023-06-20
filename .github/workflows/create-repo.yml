@@ -14,7 +14,7 @@ jobs:
     
     steps:
     
-    - name: List My Repos
+    - name: List Repos Before Create
       run: gh repo list
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -24,5 +24,10 @@ jobs:
         gh repo create ${{ github.event.inputs.repo-name }} --private \
         --description "Created From GitHub Actions" --add-readme \
         --license MIT --gitignore Node
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        
+    - name: List Repos After Create
+      run: gh repo list
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
