@@ -2,5 +2,20 @@ name: 'Delete Repo'
 
 on: 
   workflow_dispatch:
-   inputs:
+    inputs:
+      repo-name:
+        description: 'Name of the repo'
+        default: ''
+        required: true
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - name: 'List Repos'
+      run: gh repo list
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        
    
