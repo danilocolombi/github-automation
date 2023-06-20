@@ -1,0 +1,26 @@
+name: 'Archive Repo'
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Name of the Repo'
+        default: ''
+        required: true
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+      - name: List Repos
+        run: 'gh repo list'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Archive Repo
+        run: 'gh repo archive ${{ github.event.inputs.repo-name }} --yes'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
