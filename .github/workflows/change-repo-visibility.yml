@@ -22,7 +22,7 @@ jobs:
     
       - name: Set Repo Visibility
         run:  |
-          gh repo edit ${{ vars.GITHUB_REPOSITORY_OWNER}}/${{ github.event.inputs.repo-name }} \
+          gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
           --visibility=${{ github.event.inputs.repo-visibility }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
