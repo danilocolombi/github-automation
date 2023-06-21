@@ -1,0 +1,28 @@
+name: 'Update Repo Description'
+on: 
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Name of the Repo'
+        default: ''
+        required: true
+      repo-description:
+        description: 'New Description'
+        default: 'private'
+        required: true
+  
+jobs:
+  update-description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Repos
+        run: 'gh repo list'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    
+      - name: Update Repo Description
+        run:  |
+          gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
+          -d=${{ github.event.inputs.repo-description }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
