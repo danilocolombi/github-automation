@@ -23,7 +23,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       
       - name: Rename Repository
-        run: gh repo rename ${{ github.event.inputs.repo-new-name }} --repo ${{ github.repository.owner }}/${{ github.event.inputs.repo-old-name }}
+        run: gh repo rename ${{ github.event.inputs.repo-new-name }} --repo ${{ github.repository_owner }}/${{ github.event.inputs.repo-old-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           
