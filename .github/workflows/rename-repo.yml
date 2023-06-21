@@ -1,0 +1,26 @@
+name: 'Rename Repo'
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-old-name:
+        description: 'Old Name of the Repo'
+        default: ''
+        required: true
+      repo-new-name:
+        description: 'New Name of the Repo'
+        default: ''
+        required: true
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    
+    steps:
+      
+      - name: List Repos Before Rename
+        run: 'gh repo list'
+        env:
+          GH_TOKEN ${{ secrets.GH_TOKEN }}
+      
+      - name: Rename Repository
+        run: gh repo rename ${{ github.event.inputs.repo-new-name }} --repo ${{ github.repository.owner }}/${{ github.event.inputs.repo-old-name }}
