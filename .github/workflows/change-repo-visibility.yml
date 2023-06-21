@@ -1,0 +1,33 @@
+name: 'Change Repo Visibility'
+on: 
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Name of the Repo'
+        default: ''
+        required: true
+      repo-visibility:
+        description: 'Visibility of the Repo'
+        default: 'private'
+        required: true
+  
+jobs:
+  change-visibility:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Repos
+        run: 'gh repo list'
+        env:
+          GH_TOKEN: ${{ GH_TOKEN }}
+      
+      - name: Set Repo Private
+        if: ${{ github.event.inputs.repo-visibility }} == 'private'
+        run: 'gh repo edit ${{ github.event.inputs.repo-name }} --visibility=private'
+        env:
+          GH_TOKEN: ${{ GH_TOKEN }}
+      
+      - name: Set Repo Public
+        if: ${{ github.event.inputs.repo-visibility }} == 'public'
+        run: 'gh repo edit ${{ github.event.inputs.repo-name }} --visibility=public'
+        env:
+          GH_TOKEN: ${{ GH_TOKEN }}
