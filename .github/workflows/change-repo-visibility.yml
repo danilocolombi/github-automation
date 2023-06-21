@@ -18,16 +18,16 @@ jobs:
       - name: List Repos
         run: 'gh repo list'
         env:
-          GH_TOKEN: ${{ GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       
       - name: Set Repo Private
         if: ${{ github.event.inputs.repo-visibility }} == 'private'
         run: 'gh repo edit ${{ github.event.inputs.repo-name }} --visibility=private'
         env:
-          GH_TOKEN: ${{ GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       
       - name: Set Repo Public
         if: ${{ github.event.inputs.repo-visibility }} == 'public'
         run: 'gh repo edit ${{ github.event.inputs.repo-name }} --visibility=public'
         env:
-          GH_TOKEN: ${{ GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
