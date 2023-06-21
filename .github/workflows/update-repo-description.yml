@@ -8,7 +8,7 @@ on:
         required: true
       repo-description:
         description: 'New Description'
-        default: 'private'
+        default: ''
         required: true
   
 jobs:
