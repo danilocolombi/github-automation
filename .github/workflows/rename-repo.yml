@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       repo-old-name:
-        description: 'Old Name of the Repo'
+        description: 'Old Repo Name'
         default: ''
         required: true
       repo-new-name:
-        description: 'New Name of the Repo'
+        description: 'New Repo Name'
         default: ''
         required: true
 jobs:
@@ -20,7 +20,15 @@ jobs:
       - name: List Repos Before Rename
         run: 'gh repo list'
         env:
-          GH_TOKEN ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       
       - name: Rename Repository
         run: gh repo rename ${{ github.event.inputs.repo-new-name }} --repo ${{ github.repository.owner }}/${{ github.event.inputs.repo-old-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: List Repos After Rename
+        run: 'gh repo list'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
