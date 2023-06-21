@@ -15,7 +15,8 @@ jobs:
   update-description:
     runs-on: ubuntu-latest
     steps:
-      - name: List Repos
+    
+      - name: List Repos Before Description Update 
         run: 'gh repo list'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -23,6 +24,11 @@ jobs:
       - name: Update Repo Description
         run:  |
           gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
-          -d=${{ github.event.inputs.repo-description }}
+          -d="${{ github.event.inputs.repo-description }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: List Repos After Description Update 
+        run: 'gh repo list'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
