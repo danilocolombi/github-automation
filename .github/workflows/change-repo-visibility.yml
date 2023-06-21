@@ -28,6 +28,6 @@ jobs:
       
       - name: Set Repo Public
         if: ${{ github.event.inputs.repo-visibility == 'public'}} 
-        run: 'gh repo edit ${{ GITHUB_REPOSITORY_OWNER}}/${{ github.event.inputs.repo-name }} --visibility=public'
+        run: 'gh repo edit ${{ vars.GITHUB_REPOSITORY_OWNER}}/${{ github.event.inputs.repo-name }} --visibility=public'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
