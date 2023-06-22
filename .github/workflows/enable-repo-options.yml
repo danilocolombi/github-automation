@@ -24,3 +24,5 @@ jobs:
         run:  |
           gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
           --enable-wiki=${{ github.event.inputs.enable-wiki }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
