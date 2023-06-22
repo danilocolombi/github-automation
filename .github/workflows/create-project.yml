@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Update GitHub CLI
         run: |
-          sudo apt-get update
-          sudo apt-get upgrade gh -y
+          sudo apt update
+          sudo apt install gh -y
           
       - name: List Projects
         run: gh project list
