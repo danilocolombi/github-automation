@@ -46,4 +46,6 @@ jobs:
         run: |
           gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
           --enable-discussions=${{ github.event.inputs.enable-discussions }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         
