@@ -1,0 +1,26 @@
+name: 'Enable Repo Options'
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Name of the Repo'
+        default: ''
+        required: true
+      enable-wiki:
+        description: 'Enable Wiki'
+        default: 'true'
+        required: true
+jobs:
+  enable-repo-options:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: List Repos
+        run: gh repo list
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: Enable Wiki
+        run:  |
+          gh repo edit ${{ github.repository_owner }} ${{ github.event.inputs.repo-name }} \
+          --enable-wiki ${{ github.event.inputs.enable-wiki }}
