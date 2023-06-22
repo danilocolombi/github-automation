@@ -22,5 +22,5 @@ jobs:
           
       - name: Enable Wiki
         run:  |
-          gh repo edit ${{ github.repository_owner }} ${{ github.event.inputs.repo-name }} \
+          gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
           --enable-wiki ${{ github.event.inputs.enable-wiki }}
