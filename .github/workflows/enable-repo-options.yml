@@ -10,6 +10,10 @@ on:
         description: 'Enable Wiki'
         default: 'true'
         required: true
+      enable-issues:
+        description: 'Enable Issues'
+        default: 'true'
+        required: true
 jobs:
   enable-repo-options:
     runs-on: ubuntu-latest
@@ -26,3 +30,11 @@ jobs:
           --enable-wiki=${{ github.event.inputs.enable-wiki }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: Enable Issues
+        run: |
+          gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
+          --enable-issues=${{ github.event.inputs.enable-issues }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        
