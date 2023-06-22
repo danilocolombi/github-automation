@@ -12,6 +12,11 @@ jobs:
   create-project:
     runs-on: ubuntu-latest
     steps:
+      - name: Update GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get upgrade gh -y
+          
       - name: List Projects
         run: gh project list
         env:
