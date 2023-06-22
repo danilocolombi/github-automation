@@ -14,6 +14,10 @@ on:
         description: 'Enable Issues'
         default: 'true'
         required: true
+      enable-discussions:
+        description: 'Enable Issues'
+        default: 'true'
+        required: true
 jobs:
   enable-repo-options:
     runs-on: ubuntu-latest
@@ -37,4 +41,9 @@ jobs:
           --enable-issues=${{ github.event.inputs.enable-issues }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Enable Discussions
+        run: |
+          gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
+          --enable-discussions=${{ github.event.inputs.enable-discussions }}
         
