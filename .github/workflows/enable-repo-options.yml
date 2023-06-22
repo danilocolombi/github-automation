@@ -15,7 +15,11 @@ on:
         default: 'true'
         required: true
       enable-discussions:
-        description: 'Enable Issues'
+        description: 'Enable Discussions'
+        default: 'true'
+        required: true
+      enable-projects:
+        description: 'Enable Projects'
         default: 'true'
         required: true
 jobs:
@@ -46,6 +50,13 @@ jobs:
         run: |
           gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
           --enable-discussions=${{ github.event.inputs.enable-discussions }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Enable Projects
+        run: |
+          gh repo edit ${{ github.repository_owner }}/${{ github.event.inputs.repo-name }} \
+          --enable-projects=${{ github.event.inputs.enable-projects }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         
