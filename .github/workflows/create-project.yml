@@ -1,0 +1,18 @@
+name: 'Create Project'
+
+on: 
+  workflow_dispatch:
+    inputs:
+      project-name:
+        description: 'Name of the Project'
+        default: ''
+        required: true
+        
+jobs:
+  create-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Projects
+        run: gh project list
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
