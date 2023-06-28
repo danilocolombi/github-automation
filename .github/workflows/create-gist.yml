@@ -1,0 +1,19 @@
+
+  name: 'Create Gist'
+  
+  on:
+    workflow_dispatch:
+      inputs:
+        gist-name:
+          description: 'Name of the gist'
+          required: true
+          default: ''
+  jobs:
+    create-gist:
+      runs-on: ubuntu-latest
+      
+      steps:
+      - name: 'List Gists'
+        run: 'gh gist list'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
