@@ -17,10 +17,10 @@
       - name: Checkout Repository
         uses: 'actions/checkout@v2'
         
-      - name: List Files
-        run: cat .github/workflows/create-repo.yml
-        
       - name: List Gists
         run: 'gh gist list'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: Create Gist
+        run: 'gh gist create --public .github/workflows/delete-repo.yml'
