@@ -24,3 +24,5 @@
           
       - name: Create Gist
         run: 'gh gist create --public .github/workflows/delete-repo.yml'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
