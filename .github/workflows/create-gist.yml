@@ -15,7 +15,7 @@
       steps:
       
       - name: Checkout Repository
-        run: 'actions/checkout@v2'
+        uses: 'actions/checkout@v2'
         
       - name: List Files
         run: ls
