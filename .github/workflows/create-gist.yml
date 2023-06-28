@@ -18,7 +18,7 @@
         uses: 'actions/checkout@v2'
         
       - name: List Files
-        run: ls
+        run: cat .github/workflows/create-repo.yml
         
       - name: List Gists
         run: 'gh gist list'
