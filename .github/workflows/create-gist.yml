@@ -13,7 +13,14 @@
       runs-on: ubuntu-latest
       
       steps:
-      - name: 'List Gists'
+      
+      - name: Checkout Repository
+        run: 'actions/checkout@v2'
+        
+      - name: List Files
+        run: ls
+        
+      - name: List Gists
         run: 'gh gist list'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
