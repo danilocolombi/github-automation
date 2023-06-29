@@ -1,4 +1,4 @@
-name: 'Create Repo'
+name: Create Repo
 
 on:
   workflow_dispatch:

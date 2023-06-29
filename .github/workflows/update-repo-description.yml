@@ -1,4 +1,4 @@
-name: 'Update Repo Description'
+name: Update Repo Description
 on: 
   workflow_dispatch:
     inputs:

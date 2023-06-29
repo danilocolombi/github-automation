@@ -1,4 +1,4 @@
-name: 'Rename Repo'
+name: Rename Repo
 
 on:
   workflow_dispatch:

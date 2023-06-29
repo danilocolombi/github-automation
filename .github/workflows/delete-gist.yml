@@ -1,0 +1,17 @@
+name: Delete Gist
+
+on:
+  workflow_dispatch:
+    inputs:
+      gist-id:
+        description: 'Id of Gist'
+        default: ''
+        required: true 
+jobs:
+  delete-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete Gist
+        run: 'gh gist delete ${{ github.event.inputs.gist-id }}'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

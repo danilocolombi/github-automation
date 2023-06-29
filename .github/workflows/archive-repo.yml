@@ -1,4 +1,4 @@
-name: 'Archive Repo'
+name: Archive Repo
 
 on:
   workflow_dispatch:

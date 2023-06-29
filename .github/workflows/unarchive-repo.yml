@@ -1,4 +1,4 @@
-name: 'Unarchive Repo'
+name: Unarchive Repo
 
 on:
   workflow_dispatch:
