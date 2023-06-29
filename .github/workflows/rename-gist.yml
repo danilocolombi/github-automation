@@ -1,0 +1,24 @@
+name: Rename Gist
+
+on:
+  workflow_dispatch:
+    inputs:
+      gist-key:
+        description: 'Gist URL OR Id'
+        required: true
+        default: ''
+      gist-old-name:
+        description: 'Gist Old Name'
+        required: true
+        default: ''
+      gist-new-name:
+        description: 'Gist New Name'
+        required: true
+        default: '' 
+jobs:
+  rename-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rename Gist
+        run: |
+          gh gist rename ${{ github.event.inputs.gist-key }} ${{ github.event.inputs.gist-old-name }} ${{ github.event.inputs.gist-new-name }}
