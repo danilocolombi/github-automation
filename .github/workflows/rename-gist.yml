@@ -22,3 +22,5 @@ jobs:
       - name: Rename Gist
         run: |
           gh gist rename ${{ github.event.inputs.gist-key }} ${{ github.event.inputs.gist-old-name }} ${{ github.event.inputs.gist-new-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
