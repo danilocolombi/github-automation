@@ -11,7 +11,7 @@
         file-name:
           description: 'The File Name'
           required: true
-          default: '/.github/workflows/rename-repo.yml'
+          default: '.github/workflows/rename-repo.yml'
   jobs:
     create-gist:
       runs-on: ubuntu-latest
