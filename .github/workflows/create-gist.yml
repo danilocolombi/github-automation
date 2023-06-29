@@ -4,10 +4,14 @@
   on:
     workflow_dispatch:
       inputs:
-        gist-name:
-          description: 'Name of the gist'
+        repository:
+          description: 'The GitHub Repository'
           required: true
-          default: ''
+          default: 'danilocolombi/github-automation'
+        file-name:
+          description: 'The File Name'
+          required: true
+          default: '/.github/workflows/rename-repo.yml'
   jobs:
     create-gist:
       runs-on: ubuntu-latest
@@ -15,7 +19,9 @@
       steps:
       
       - name: Checkout Repository
-        uses: 'actions/checkout@v2'
+        uses: 'actions/checkout@v3'
+        with:
+          repository: '${{ github.event.inputs.repository }}'
         
       - name: List Gists
         run: 'gh gist list'
@@ -23,6 +29,6 @@
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           
       - name: Create Gist
-        run: 'gh gist create --public .github/workflows/delete-repo.yml'
+        run: 'gh gist create --public ${{ github.event.inputs.file-name }}'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
