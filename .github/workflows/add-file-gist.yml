@@ -1,0 +1,32 @@
+name: Add File to Gist
+
+on:
+  workflow_dispatch:
+    inputs:
+      gist-key:
+        description: 'Gist URL OR Id'
+        required: true
+        default: ''
+        repository:
+          description: 'The GitHub Repository'
+          required: true
+          default: 'danilocolombi/github-automation'
+        file-name:
+          description: 'The File Name'
+          required: true
+          default: '.github/workflows/list-repos.yml'
+jobs:
+  add-file:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Checkout Repository
+        uses: 'actions/checkout@v3'
+        with:
+          repository: ${{ github.event.inputs.repository }}
+
+      - name: Add File
+        run: |
+          gh gist edit ${{ github.event.inputs.gist-key }} -a ${{ github.event.inputs.file-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
