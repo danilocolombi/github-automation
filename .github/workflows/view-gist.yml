@@ -1,0 +1,19 @@
+name: Gist View
+
+on:
+  workflow_dispatch:
+    inputs:
+      gist-key:
+        description: 'Gist URL OR Id'
+        required: true
+        default: 'https://gist.github.com/danilocolombi/cc7824f7aeee94c5afa35bc9a2eadb40'
+jobs:
+  gist-view:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Gist View
+        run: gh gist view ${{ github.event.inputs.gist-key }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
