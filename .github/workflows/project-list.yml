@@ -1,12 +1,7 @@
-name: Create Project
+name: List Projects
 
 on: 
   workflow_dispatch:
-    inputs:
-      project-name:
-        description: 'Name of the Project'
-        default: ''
-        required: true
         
 jobs:
   create-project:
