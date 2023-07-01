@@ -7,6 +7,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Repos](#repos)
 - [Projects](#projects)
 - [Gists](#gists)
+- [Secrets](#secrets)
 
 ## Repos
 - [Create](.github/workflows/repo-create.yml)
@@ -28,3 +29,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Add File](.github/workflows/gist-add-file.yml)
 - [Rename](.github/workflows/gist-rename.yml)
 - [View](.github/workflows/gist-view.yml)
+
+## Secrets
+- [Set](.github/workflows/secret-set.yml)
