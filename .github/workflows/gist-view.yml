@@ -1,4 +1,4 @@
-name: View Gist 
+name: Gist - View 
 
 on:
   workflow_dispatch:
