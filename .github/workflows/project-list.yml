@@ -1,4 +1,4 @@
-name: List Projects
+name: Project - List
 
 on: 
   workflow_dispatch:

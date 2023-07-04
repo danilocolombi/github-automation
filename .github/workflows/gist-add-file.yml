@@ -1,4 +1,4 @@
-name: Add File to Gist
+name: Gist - Add File
 
 on:
   workflow_dispatch:

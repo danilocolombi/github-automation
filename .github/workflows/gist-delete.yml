@@ -1,4 +1,4 @@
-name: Delete Gist
+name: Gist - Delete 
 
 on:
   workflow_dispatch:

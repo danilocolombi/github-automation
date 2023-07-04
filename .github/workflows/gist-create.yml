@@ -1,5 +1,5 @@
 
-  name: Create Gist
+  name: Gist - Create
   
   on:
     workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Change Repo Visibility
+name: Repo - Change Visibility
 on: 
   workflow_dispatch:
     inputs:
