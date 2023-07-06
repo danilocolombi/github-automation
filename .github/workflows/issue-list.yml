@@ -16,4 +16,4 @@ jobs:
       - name: List Issues
         run: gh issue list --repo ${{ github.event.inputs.repo-name }}
         env:
-          GH_TOKEN ${{ secrets.GH_TOKEN }} 
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
