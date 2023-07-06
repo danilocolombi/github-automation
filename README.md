@@ -8,6 +8,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Projects](#projects)
 - [Gists](#gists)
 - [Secrets](#secrets)
+- [issues](#issues)
 
 ## Repos
 - [Create](.github/workflows/repo-create.yml)
@@ -34,3 +35,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Set](.github/workflows/secret-set.yml)
 - [Delete](.github/workflows/secret-delete.yml)
 - [List](.github/workflows/secret-list.yml)
+
+## Issues
+- [Create](.github/workflows/issue-create.yml)

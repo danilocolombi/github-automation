@@ -1,0 +1,33 @@
+name: Issue - Create
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue-title:
+        description: 'Issue Title'
+        default: 'I found a bug'
+        required: true
+      repo-name:
+        description: 'Repository Name'
+        default: 'danilocolombi/teste'
+
+jobs:
+  create-issue:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: List Issues Before Create
+        run: gh issue list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Create Issue
+        run: gh issue create --title ${{ github.event.inputs.issue-title }} --repo ${{ github.event.inputs.repo-name}}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Issues After Create
+        run: gh issue list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
