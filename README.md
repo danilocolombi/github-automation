@@ -32,3 +32,5 @@ This repo contains a list of workflows to automate tasks in GitHub
 
 ## Secrets
 - [Set](.github/workflows/secret-set.yml)
+- [Delete](.github/workflows/secret-delete.yml)
+- [List](.github/workflows/secret-list.yml)
