@@ -14,8 +14,8 @@ on:
 jobs:
   change-visibility:
     runs-on: ubuntu-latest
-    steps:
-    
+
+    steps:    
       - name: List Repos Before Change
         run: 'gh repo list'
         env:
