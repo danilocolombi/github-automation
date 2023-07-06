@@ -38,3 +38,5 @@ This repo contains a list of workflows to automate tasks in GitHub
 
 ## Issues
 - [Create](.github/workflows/issue-create.yml)
+- [List](.github/workflows/issue-list.yml)
+- [Delete](.github/workflows/issue-delete.yml)
