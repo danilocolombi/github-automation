@@ -1,0 +1,35 @@
+name: Issue - Delete
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'Issue Number'
+        default: 1
+        required: true
+        type: number
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+        
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Issues Before Delete
+        run: gh issue list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
+      
+      - name: Delete Issue
+        run: gh issue delete ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }} --yes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Issues After Delete
+        run: gh issue list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
