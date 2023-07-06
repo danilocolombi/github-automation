@@ -7,6 +7,10 @@ on:
         description: 'Issue Title'
         default: 'I found a bug'
         required: true
+      issue-body:
+        description: 'Issue Body'
+        default: 'This issue is affecting users'
+        required: true
       repo-name:
         description: 'Repository Name'
         default: 'danilocolombi/teste'
@@ -23,7 +27,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Create Issue
-        run: gh issue create --title "${{ github.event.inputs.issue-title }}" --repo ${{ github.event.inputs.repo-name}}
+        run: |
+          gh issue create --title "${{ github.event.inputs.issue-title }}" \
+          --body "${{ github.event.inputs.issue-body }}" \
+          --repo ${{ github.event.inputs.repo-name}}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
