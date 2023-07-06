@@ -16,11 +16,10 @@ on:
         default: 'danilocolombi/teste'
 
 jobs:
-  create-issue:
+  create:
     runs-on: ubuntu-latest
     
     steps:
-
       - name: List Issues Before Create
         run: gh issue list --repo ${{ github.event.inputs.repo-name }}
         env:

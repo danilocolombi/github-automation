@@ -16,8 +16,9 @@ on:
         required: true
         default: '' 
 jobs:
-  rename-gist:
+  rename:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Rename Gist
         run: |

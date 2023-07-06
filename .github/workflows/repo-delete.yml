@@ -11,8 +11,7 @@ jobs:
   delete:
     runs-on: ubuntu-latest
     
-    steps:
-    
+    steps:    
     - name: 'List Repos Before Delete'
       run: gh repo list
       env:

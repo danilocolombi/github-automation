@@ -13,11 +13,10 @@
           required: true
           default: '.github/workflows/rename-repo.yml'
   jobs:
-    create-gist:
+    create:
       runs-on: ubuntu-latest
       
-      steps:
-      
+      steps:      
       - name: Checkout Repository
         uses: 'actions/checkout@v3'
         with:

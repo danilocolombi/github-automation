@@ -14,8 +14,8 @@ on:
 jobs:
   update-description:
     runs-on: ubuntu-latest
-    steps:
-    
+
+    steps:    
       - name: List Repos Before Description Update 
         run: 'gh repo list'
         env:

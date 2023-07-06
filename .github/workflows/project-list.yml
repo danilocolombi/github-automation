@@ -4,8 +4,9 @@ on:
   workflow_dispatch:
         
 jobs:
-  create-project:
+  create:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Update GitHub CLI
         run: |

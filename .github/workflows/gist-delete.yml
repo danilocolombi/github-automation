@@ -8,8 +8,9 @@ on:
         default: ''
         required: true 
 jobs:
-  delete-gist:
+  delete:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Delete Gist
         run: 'gh gist delete ${{ github.event.inputs.gist-id }}'

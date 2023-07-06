@@ -15,8 +15,7 @@ jobs:
   rename:
     runs-on: ubuntu-latest
     
-    steps:
-      
+    steps:      
       - name: List Repos Before Rename
         run: 'gh repo list'
         env:
