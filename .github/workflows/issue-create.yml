@@ -23,7 +23,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Create Issue
-        run: gh issue create --title ${{ github.event.inputs.issue-title }} --repo ${{ github.event.inputs.repo-name}}
+        run: gh issue create --title "${{ github.event.inputs.issue-title }}" --repo ${{ github.event.inputs.repo-name}}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
