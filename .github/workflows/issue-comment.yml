@@ -26,8 +26,8 @@ jobs:
 
       - name: Comment Issue
         run: |
-          gh issue comment ${{ github.event.inputs.issue-number }} 
-          --body "${{ github.event.inputs.comment}}" 
+          gh issue comment ${{ github.event.inputs.issue-number }} \
+          --body "${{ github.event.inputs.comment}}" \
           --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
