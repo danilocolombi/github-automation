@@ -14,6 +14,7 @@ on:
       repo-name:
         description: 'Repository Name'
         default: 'danilocolombi/teste'
+        required: true
 
 jobs:
   create:

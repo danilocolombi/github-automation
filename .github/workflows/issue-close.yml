@@ -1,4 +1,4 @@
-name: Issue - Comment
+name: Issue - Close
 
 on:
   workflow_dispatch:
@@ -8,32 +8,25 @@ on:
         default: 1
         required: true
         type: number
-      comment:
-        description: 'Comment'
-        default: 'This issue is taking too long to be solved'
-        required: true
       repo-name:
         description: 'Repository Name'
         default: 'danilocolombi/teste'
         required: true
 jobs:
-  comment:
+  close:
     runs-on: ubuntu-latest
     steps:
-      - name: View Issue Before Comment
+      - name: View Issue Before Closing
         run: gh issue view ${{ github.event.inputs.issue-number }}  --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Comment Issue
-        run: |
-          gh issue comment ${{ github.event.inputs.issue-number }} \
-          --body "${{ github.event.inputs.comment}}" \
-          --repo ${{ github.event.inputs.repo-name }}
+      - name: Close Issue
+        run: gh issue close ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: View Issue After Comment
+      - name: View Issue After Closing
         run: gh issue view ${{ github.event.inputs.issue-number }}  --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
