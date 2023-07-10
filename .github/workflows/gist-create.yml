@@ -1,33 +1,27 @@
-
-  name: Gist - Create
+name: Gist - Create
   
-  on:
-    workflow_dispatch:
-      inputs:
-        repository:
-          description: 'The GitHub Repository'
-          required: true
-          default: 'danilocolombi/github-automation'
-        file-name:
-          description: 'The File Name'
-          required: true
-          default: '.github/workflows/rename-repo.yml'
-  jobs:
-    create:
-      runs-on: ubuntu-latest
-      
-      steps:      
-      - name: Checkout Repository
-        uses: 'actions/checkout@v3'
-        with:
-          repository: '${{ github.event.inputs.repository }}'
-        
-      - name: List Gists
-        run: 'gh gist list'
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          
-      - name: Create Gist
-        run: 'gh gist create --public ${{ github.event.inputs.file-name }}'
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'The GitHub Repository'
+        required: true
+        default: 'danilocolombi/github-automation'
+      file-name:
+        description: 'The File Name'
+        required: true
+        default: '.github/workflows/rename-repo.yml'
+jobs:
+  create:
+    runs-on: ubuntu-latest
+
+    steps:      
+    - name: Checkout Repository
+      uses: 'actions/checkout@v3'
+      with:
+        repository: '${{ github.event.inputs.repository }}'
+
+    - name: Create Gist
+      run: 'gh gist create --public ${{ github.event.inputs.file-name }}'
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
