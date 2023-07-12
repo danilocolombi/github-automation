@@ -1,0 +1,46 @@
+name: Issue - Lock
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'Issue Number'
+        default: 1
+        required: true
+        type: number
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+      lock-reason:
+        description: 'Reason to Lock'
+        default: 'resolved'
+        required: true
+        type: choice
+        options:
+          - resolved
+          - off_topic
+          - spam
+          - too_heated
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: View Issue Before Locking
+        run: gh issue view ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Lock Issue
+        run: |
+          gh issue lock ${{ github.event.inputs.issue-number }} \
+          --reason ${{ github.event.inputs.lock-reason }} \
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: View Issue After Locking
+        run: gh issue view ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
