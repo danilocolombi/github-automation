@@ -17,7 +17,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Rename](.github/workflows/repo-rename.yml)
 - [Archive](.github/workflows/repo-archive.yml)
 - [Unarchive](.github/workflows/repo-unarchive.yml)
-- [Enable](.github/workflows/repo-enable-options.yml)
+- [Enable Options](.github/workflows/repo-enable-options.yml)
 - [Update Description](.github/workflows/repo-update-description.yml)
 - [Change Visibility](.github/workflows/repo-change-visibility.yml)
 
@@ -42,5 +42,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Delete](.github/workflows/issue-delete.yml)
 - [Comment](.github/workflows/issue-comment.yml)
 - [Close](.github/workflows/issue-close.yml)
+- [Reopen](.github/workflows/issue-reopen.yml)
 - [Lock](.github/workflows/issue-lock.yml)
 - [Unlock](.github/workflows/issue-unlock.yml)

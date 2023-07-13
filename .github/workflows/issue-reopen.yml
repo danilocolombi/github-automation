@@ -1,4 +1,4 @@
-name: Issue - Close
+name: Issue - Reopen
 
 on:
   workflow_dispatch:
@@ -9,24 +9,26 @@ on:
         required: true
         type: number
       repo-name:
-        description: 'Repository Name'
+        description: 'Repo Name'
         default: 'danilocolombi/teste'
         required: true
+
 jobs:
-  close:
+  reopen:
     runs-on: ubuntu-latest
+
     steps:
-      - name: List Issues Before Closing
+      - name: List Issues Before Reopening
         run: gh issue list --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Close Issue
-        run: gh issue close ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
+      - name: Reopen Issue
+        run: gh issue reopen ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      - name: List Issues After Closing
+      
+      - name: List Issues After Reopening
         run: gh issue list --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
