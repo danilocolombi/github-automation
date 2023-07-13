@@ -42,3 +42,5 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Delete](.github/workflows/issue-delete.yml)
 - [Comment](.github/workflows/issue-comment.yml)
 - [Close](.github/workflows/issue-close.yml)
+- [Lock](.github/workflows/issue-lock.yml)
+- [Unlock](.github/workflows/issue-unlock.yml)
