@@ -45,3 +45,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Reopen](.github/workflows/issue-reopen.yml)
 - [Lock](.github/workflows/issue-lock.yml)
 - [Unlock](.github/workflows/issue-unlock.yml)
+- [Status](.github/workflows/issue-status.yml)

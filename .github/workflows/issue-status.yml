@@ -1,0 +1,19 @@
+name: Issue - Status
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 'issue Status'
+        run: gh issue status --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
