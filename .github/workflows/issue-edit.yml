@@ -1,0 +1,41 @@
+name: Issue - Edit
+
+on:
+workflow_dispatch:
+  inputs:
+    issue-number:
+      description: 'Issue Number'
+      default: 1
+      required: true
+      type: number
+    repo-name:
+      description: 'Repo Name'
+      default: 'danilocolombi/teste'
+      required: true
+    issue-new-title:
+      description: 'New Issue Title'
+      default: ''
+      required: true
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: View Issue Before Editing
+        run: gh issue view ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Edit Issue
+        run: |
+          gh issue edit ${{ github.event.inputs.issue-number }} \
+          -t ${{ github.event.inputs.issue-new-title }} \
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: View Issue After Editing
+        run: gh issue view ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
