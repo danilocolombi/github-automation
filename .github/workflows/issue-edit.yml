@@ -1,21 +1,21 @@
 name: Issue - Edit
 
 on:
-workflow_dispatch:
-  inputs:
-    issue-number:
-      description: 'Issue Number'
-      default: 1
-      required: true
-      type: number
-    repo-name:
-      description: 'Repo Name'
-      default: 'danilocolombi/teste'
-      required: true
-    issue-new-title:
-      description: 'New Issue Title'
-      default: ''
-      required: true
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'Issue Number'
+        default: 1
+        required: true
+        type: number
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+      issue-new-title:
+        description: 'New Issue Title'
+        default: ''
+        required: true
 
 jobs:
   edit:
