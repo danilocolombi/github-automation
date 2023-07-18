@@ -1,0 +1,30 @@
+name: Issue - Pin
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'Issue Number'
+        default: 1
+        required: true
+        type: number
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+
+jobs:
+  pin:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: List Issues
+        run: gh issue list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Pin Issue
+        run: gh issue pin ${{ github.event.inputs.issue-number }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
