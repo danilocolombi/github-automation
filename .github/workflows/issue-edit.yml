@@ -30,7 +30,7 @@ jobs:
       - name: Edit Issue
         run: |
           gh issue edit ${{ github.event.inputs.issue-number }} \
-          -t ${{ github.event.inputs.issue-new-title }} \
+          -t "${{ github.event.inputs.issue-new-title }}" \
           --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
