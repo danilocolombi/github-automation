@@ -1,0 +1,40 @@
+name: Issue - Develop
+on:
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'Issue Number'
+        default: 1
+        required: true
+        type: number
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+      branch-name:
+        description: 'New Branch Name'
+        default: 'feature/1'
+        required: true
+
+jobs:
+  develop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List issue Branches Before Developing
+        run: gh issue develop --list --repo ${{ github.event.inputs.repo-name }} ${{ github.event.inputs.issue-number }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Develop Issue
+        run: |
+          gh issue develop ${{ github.event.inputs.issue-number }} \
+          --base main --name ${{ github.event.inputs.branch-name }} \
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List issue Branches After Developing
+        run: gh issue develop --list --repo ${{ github.event.inputs.repo-name }} ${{ github.event.inputs.issue-number }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
