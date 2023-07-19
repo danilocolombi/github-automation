@@ -49,3 +49,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Edit](.github/workflows/issue-edit.yml)
 - [Pin](.github/workflows/issue-pin.yml)
 - [Unpin](.github/workflows/issue-unpin.yml)
+- [Develop](.github/workflows/issue-develop.yml)
