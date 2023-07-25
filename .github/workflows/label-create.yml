@@ -27,7 +27,7 @@ jobs:
       - name: Create Label
         run: |
           gh label create "${{ github.event.inputs.label-name }}" \
-          --description "${{ github.event.inputs-label-description}}" \
+          --description "${{ github.event.inputs.label-description}}" \
           --repo ${{ github.event.inputs.repo-name }}
         env:
             GH_TOKEN: ${{ secrets.GH_TOKEN }}
