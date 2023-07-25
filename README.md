@@ -54,3 +54,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 
 ## Labels
 - [List](.github/workflows/label-list.yml)
+- [Create](.github/workflows/label-create.yml)
