@@ -1,0 +1,17 @@
+name: Label - List
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+jobs:
+  list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Labels
+        run: gh label list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
