@@ -9,6 +9,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Gists](#gists)
 - [Secrets](#secrets)
 - [issues](#issues)
+- [Labels](#labels)
 
 ## Repos
 - [Create](.github/workflows/repo-create.yml)
@@ -50,3 +51,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Pin](.github/workflows/issue-pin.yml)
 - [Unpin](.github/workflows/issue-unpin.yml)
 - [Develop](.github/workflows/issue-develop.yml)
+
+## Labels
+- [List](.github/workflows/label-list.yml)
