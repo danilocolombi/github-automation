@@ -1,0 +1,38 @@
+name: Label - Create
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+      label-name:
+        description: 'Label Name'
+        default: ''
+        required: true
+      label-description:
+        description: 'Label Description'
+        default: ''
+        required: true
+jobs:
+  create:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Labels Before Creating
+        run: gh label list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Create Label
+        run: |
+          gh label create "${{ github.event.inputs.label-name }}" \
+          --description "${{ github.event.inputs-label-description}}" \
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+            GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: List Labels After Creating
+        run: gh label list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
