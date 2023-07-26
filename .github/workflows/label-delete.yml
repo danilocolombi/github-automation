@@ -1,0 +1,30 @@
+name: Label - Delete
+on:
+  workflow_dispatch:
+    inputs:
+      label-name:
+        description: 'Label Name'
+        default: ''
+        required: true
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Labels Before Deleting
+        run: gh label list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Delete Label
+        run: gh label delete "${{ github.event.inputs.label-name }}" --repo ${{ github.event.inputs.repo-name }} --yes
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Labels After Deleting
+        run: gh label list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
