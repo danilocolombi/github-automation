@@ -22,7 +22,8 @@ jobs:
 
       - name: Delete Label
         run: gh label delete "${{ github.event.inputs.label-name }}" --repo ${{ github.event.inputs.repo-name }} --yes
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: List Labels After Deleting
         run: gh label list --repo ${{ github.event.inputs.repo-name }}
