@@ -1,0 +1,43 @@
+name: Label - Edit
+on:
+  workflow_dispatch:
+    inputs:
+      label-name:
+        description: 'Label Name'
+        default: ''
+        required: true
+      new-label-name:
+        description: 'New Label Name'
+        default: ''
+        required: true
+      new-label-description:
+        description: 'New Label Description'
+        default: ''
+        required: true
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Labels Before Editing
+        run: gh label list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Delete Label
+        run: |
+          gh label edit "${{ github.event.inputs.label-name }}" \
+          --name "${{ github.event.inputs.new-label-name }}" \
+          --description "${{ github.event.inputs.new-label-description }}" \
+          --repo ${{ github.event.inputs.repo-name }} --yes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Labels After Editing
+        run: gh label list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
