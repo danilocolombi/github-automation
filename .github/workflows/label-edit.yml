@@ -28,12 +28,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Delete Label
+      - name: Edit Label
         run: |
           gh label edit "${{ github.event.inputs.label-name }}" \
           --name "${{ github.event.inputs.new-label-name }}" \
           --description "${{ github.event.inputs.new-label-description }}" \
-          --repo ${{ github.event.inputs.repo-name }} --yes
+          --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
