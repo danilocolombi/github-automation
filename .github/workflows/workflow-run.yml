@@ -1,0 +1,57 @@
+name: Workflow - Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      workflow-name:
+        description: 'Workflow Name'
+        default: 'workflow-list.yml'
+        required: true
+      first-parameter-name:
+        description: 'First Workflow Parameter Name'
+        default: ''
+        required: false
+      first-parameter-value:
+        description: 'First Workflow Parameter Value'
+        default: ''
+        required: false
+      second-parameter-name:
+        description: 'Second Workflow Parameter Name'
+        default: ''
+        required: false
+      second-parameter-value:
+        description: 'Second Workflow Parameter Value'
+        default: ''
+        required: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute Workflow With No Parameters
+        if: ${{ github.event.inputs.first-parameter-name == '' }}
+        run: gh workflow run ${{ github.event.inputs.workflow-name }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Execute Workflow With 1 Parameter
+        if: ${{ github.event.inputs.first-parameter-name != '' && github.event.inputs.second-parameter-name == '' }}
+        run: |
+          gh workflow run ${{ github.event.inputs.workflow-name }} \
+          -f ${{ github.event.inputs.first-parameter-name }}="${{github.event.inputs.first-parameter-value}}" \
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Execute Workflow With 2 Parameters
+        if: ${{ github.event.inputs.first-parameter-name != '' && github.event.inputs.second-parameter-name != '' }}
+        run: |
+          gh workflow run ${{ github.event.inputs.workflow-name }} \
+          -f ${{ github.event.inputs.first-parameter-name }}="${{github.event.inputs.first-parameter-value}}" \
+          -f ${{ github.event.inputs.second-parameter-name }}="${{github.event.inputs.second-parameter-value}}" \
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
