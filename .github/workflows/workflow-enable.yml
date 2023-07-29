@@ -1,0 +1,31 @@
+name: Workflow - Enable
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      workflow-name:
+        description: 'Workflow Name'
+        default: 'workflow-list.yml'
+        required: true
+jobs:
+  enable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Workflows Before Enabling
+        run: gh workflow list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Enable Workflow
+        run: gh workflow enable ${{ github.event.inputs.workflow-name }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Workflows After Enabling
+        run: gh workflow list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
