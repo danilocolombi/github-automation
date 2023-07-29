@@ -1,0 +1,31 @@
+name: Workflow - Disable
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      workflow-name:
+        description: 'Workflow Name'
+        default: 'workflow-list.yml'
+        required: true
+jobs:
+  disable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Workflows Before Disabling
+        run: gh workflow list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Disable Workflow
+        run: gh workflow disable ${{ github.event.inputs.workflow-name }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Workflows After Disabling
+        run: gh workflow list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
