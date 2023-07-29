@@ -10,6 +10,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Secrets](#secrets)
 - [issues](#issues)
 - [Labels](#labels)
+- [Workflows](#workflows)
 
 ## Repos
 - [Create](.github/workflows/repo-create.yml)
@@ -57,3 +58,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Create](.github/workflows/label-create.yml)
 - [Delete](.github/workflows/label-delete.yml)
 - [Edit](.github/workflows/label-edit.yml)
+
+## Workflows
+- [List](.github/workflows/workflow-list.yml)
