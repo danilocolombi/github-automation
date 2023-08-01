@@ -11,6 +11,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [issues](#issues)
 - [Labels](#labels)
 - [Workflows](#workflows)
+- [Runs](#runs)
 
 ## Repos
 - [Create](.github/workflows/repo-create.yml)
@@ -65,3 +66,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Enable](.github/workflows/workflow-enable.yml)
 - [Run](.github/workflows/workflow-run.yml)
 - [View](.github/workflows/workflow-view.yml)
+
+## Runs
+- [List](.github/workflows/run-list.yml)
