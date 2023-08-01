@@ -11,6 +11,7 @@ on:
         description: 'Status'
         default: 'success'
         required: true
+        type: choice
         options:
           - success
           - failure
