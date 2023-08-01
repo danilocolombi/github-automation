@@ -1,0 +1,26 @@
+name: Run - List
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      run-status:
+        description: 'Status'
+        default: 'success'
+        required: true
+        options:
+          - success
+          - failure
+          - in_progress
+          - waiting
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Runs
+        run: gh run list --status ${{ github.event.inputs.run-status }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
