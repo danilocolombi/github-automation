@@ -16,7 +16,7 @@ jobs:
   view:
     runs-on: ubuntu-latest
     steps:
-      - step: View Workflow
+      - name: View Workflow
         run: gh workflow view ${{ github.event.inputs.workflow-name }} --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
