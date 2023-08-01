@@ -64,3 +64,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Disable](.github/workflows/workflow-disable.yml)
 - [Enable](.github/workflows/workflow-enable.yml)
 - [Run](.github/workflows/workflow-run.yml)
+- [View](.github/workflows/workflow-view.yml)

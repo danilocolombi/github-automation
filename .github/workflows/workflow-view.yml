@@ -1,0 +1,22 @@
+name: Workflow - View
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      workflow-name:
+        description: 'Workflow Name'
+        default: 'secret-set.yml'
+        required: true
+
+jobs:
+  view:
+    runs-on: ubuntu-latest
+    steps:
+      - step: View Workflow
+        run: gh workflow view ${{ github.event.inputs.workflow-name }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
