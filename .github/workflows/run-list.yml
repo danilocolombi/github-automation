@@ -20,6 +20,7 @@ on:
 jobs:
   list:
     runs-on: ubuntu-latest
+    
     steps:
       - name: List Runs
         run: gh run list --status ${{ github.event.inputs.run-status }} --repo ${{ github.event.inputs.repo-name }}
