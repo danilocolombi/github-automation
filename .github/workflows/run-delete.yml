@@ -1,0 +1,32 @@
+name: Run - Delete
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      run-id:
+        description: 'Run Id'
+        default: ''
+        required: true
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Runs Before Deleting
+        run: gh run list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
+      
+      - name: Delete Run
+        run: gh run delete ${{ github.event.inputs.run-id }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Runs After Deleting
+        run: gh run list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

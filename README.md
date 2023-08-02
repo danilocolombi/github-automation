@@ -69,3 +69,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 
 ## Runs
 - [List](.github/workflows/run-list.yml)
+- [Delete](.github/workflows/run-delete.yml)
