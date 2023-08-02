@@ -1,0 +1,22 @@
+name: Run - View
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      run-id:
+        description: 'Run Id'
+        default: ''
+        required: true
+jobs:
+  view:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: View Run
+        run: gh run view ${{ github.event.inputs.run-id }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
