@@ -1,0 +1,32 @@
+name: Release - Create
+
+on: 
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+      tag-name:
+        description: 'Tag Name'
+        default: 'v1.0.0'
+        required: true
+jobs:
+  create:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Releases Before Creating
+        run: gh release list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Create Release
+        run: gh release create ${{ github.event.inputs.tag-name }} --generate-notes --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: List Releases After Creating
+        run: gh release list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
