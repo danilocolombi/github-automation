@@ -11,6 +11,11 @@ on:
         description: 'Tag Name'
         default: 'v1.0.0'
         required: true
+      pre-release:
+        description: 'Pre Release'
+        default: true
+        required: true
+        type: boolean
 jobs:
   create:
     runs-on: ubuntu-latest
@@ -22,10 +27,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       
       - name: Create Release
-        run: gh release create ${{ github.event.inputs.tag-name }} --generate-notes --repo ${{ github.event.inputs.repo-name }}
+        run: |
+          gh release create ${{ github.event.inputs.tag-name }} \
+          --prerelease=${{ github.event.inputs.pre-release }} \
+          --generate-notes --repo ${{ github.event.inputs.repo-name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          
+
       - name: List Releases After Creating
         run: gh release list --repo ${{ github.event.inputs.repo-name }}
         env:
