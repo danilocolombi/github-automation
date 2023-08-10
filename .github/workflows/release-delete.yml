@@ -1,0 +1,40 @@
+name: Release - Delete
+
+on: 
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+      tag-name:
+        description: 'Tag Name'
+        default: 'v1.0.0'
+        required: true
+      cleanup-tag:
+        description: 'Delete Tag'
+        default: true
+        required: true
+        type: boolean
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Releases Before Deleting
+        run: gh release list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Delete Release
+        run: |
+          gh release delete ${{ github.event.inputs.tag-name }} \
+          --cleanup-tag=${{ github.event.inputs.cleanup-tag }} \
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Releases After Deleting
+        run: gh release list --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
