@@ -12,6 +12,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Labels](#labels)
 - [Workflows](#workflows)
 - [Runs](#runs)
+- [Releases](#releases)
 
 ## Repos
 - [Create](.github/workflows/repo-create.yml)
@@ -71,3 +72,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [List](.github/workflows/run-list.yml)
 - [Delete](.github/workflows/run-delete.yml)
 - [View](.github/workflows/run-view.yml)
+
+## Releases
+- [Create](.github/workflows/release-create.yml)
