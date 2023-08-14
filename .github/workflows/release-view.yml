@@ -2,7 +2,7 @@ name: Release - View
 on:
   workflow_dispatch: 
     inputs:
-      repository-name:
+      repo-name:
         description: 'Repository Name'
         default: 'danilocolombi/github-automation'
         required: true
