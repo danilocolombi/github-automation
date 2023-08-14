@@ -7,10 +7,6 @@ on:
         description: 'Repo Name'
         default: 'danilocolombi/teste'
         required: true
-      tag-name:
-        description: 'Tag Name'
-        default: 'v1.0.0'
-        required: true
 jobs:
   list:
     runs-on: ubuntu-latest
