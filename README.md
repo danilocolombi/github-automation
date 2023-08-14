@@ -74,6 +74,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [View](.github/workflows/run-view.yml)
 
 ## Releases
+- [List](.github/workflows/release-list.yml)
 - [Create](.github/workflows/release-create.yml)
 - [Delete](.github/workflows/release-delete.yml)
 - [View](.github/workflows/release.view.yml)
