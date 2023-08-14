@@ -76,3 +76,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 ## Releases
 - [Create](.github/workflows/release-create.yml)
 - [Delete](.github/workflows/release-delete.yml)
+- [View](.github/workflows/release.view.yml)
