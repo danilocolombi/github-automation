@@ -1,0 +1,21 @@
+name: Release - View
+on:
+  workflow_dispatch: 
+    inputs:
+      repository-name:
+        description: 'Repository Name'
+        default: 'danilocolombi/github-automation'
+        required: true
+      tag-name:
+        description: 'Tag Name'
+        default: 'v1.0.0'
+        required: true
+jobs:
+  view:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: View Release
+        run: gh release view ${{ github.event.inputs.tag-name }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
