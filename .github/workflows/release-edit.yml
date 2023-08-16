@@ -38,7 +38,7 @@ jobs:
       - name: Edit Release
         run: |
           gh release edit ${{ github.event.inputs.tag-name }} \
-          --title "${{ github.event.inputs.title }}" \ 
+          --title "${{ github.event.inputs.title }}" \
           --draft=${{ github.event.inputs.draft }} \
           --prerelease=${{ github.event.inputs.prerelease }} \
           --repo ${{ github.event.inputs.repo-name }}
