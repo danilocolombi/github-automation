@@ -1,0 +1,51 @@
+name: Release - Edit
+
+on: 
+  workflow_dispatch:
+    inputs:
+      repo-name:
+        description: 'Repo Name'
+        default: 'danilocolombi/teste'
+        required: true
+      tag-name:
+        description: 'Tag Name'
+        default: 'v1.0.0'
+        required: true
+      title:
+        description: 'Title'
+        default: 'New Release'
+        required: true
+      draft:
+        description: 'Draft'
+        default: false
+        required: true
+        type: boolean
+      prerelease:
+        description: 'Prerelease'
+        default: false
+        required: true
+        type: boolean
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: View Release Before Editing
+        run: gh release view ${{ github.event.inputs.tag-name }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Edit Release
+        run: |
+          gh release edit ${{ github.event.inputs.tag-name }} /
+          --title="${{ github.event.inputs.title }}" / 
+          --draft=${{ github.event.inputs.draft }} /
+          --prerelease=${{ github.event.inputs.prerelease }} /
+          --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: View Release After Editing
+        run: gh release view ${{ github.event.inputs.tag-name }} --repo ${{ github.event.inputs.repo-name }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
