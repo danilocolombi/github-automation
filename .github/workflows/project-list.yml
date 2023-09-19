@@ -9,11 +9,11 @@ on:
         default: 'danilocolombi'
 
 jobs:
-  create:
+  list:
     runs-on: ubuntu-latest
     
     steps:   
       - name: List Projects
-        run: gh project list --owner  ${{ github.events.inputs.owner }}
+        run: gh project list --owner ${{ github.event.inputs.owner }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
