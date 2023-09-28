@@ -1,0 +1,30 @@
+name: Project - Create
+
+on: 
+  workflow_dispatch: 
+    inputs:
+      project-number:
+        description: 'Project Number'
+        required: true
+        default: 1
+        type: number
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Projects Before Deleting
+        run: gh project list --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+    
+      - name: Delete Project
+        run: gh project delete ${{ github.event.inputs.project-number }} --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: List Projects After Deleting
+        run: gh project list --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
