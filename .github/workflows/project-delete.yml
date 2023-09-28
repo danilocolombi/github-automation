@@ -1,4 +1,4 @@
-name: Project - Create
+name: Project - Delete
 
 on: 
   workflow_dispatch: 
