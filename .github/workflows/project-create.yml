@@ -13,12 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: List Projects
+      - name: List Projects Before Creating
         run: gh project list --owner @me
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
     
       - name: Create Project
         run: gh project create --owner @me --title "${{ github.event.inputs.title }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: List Projects After Creating
+        run: gh project list --owner @me
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
