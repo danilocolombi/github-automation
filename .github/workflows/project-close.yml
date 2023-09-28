@@ -1,0 +1,30 @@
+name: Project - Close
+
+on: 
+  workflow_dispatch: 
+    inputs:
+      project-number:
+        description: 'Project Number'
+        required: true
+        default: 1
+        type: number
+
+jobs:
+  Close:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Projects Before Closing
+        run: gh project list --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+    
+      - name: Close Project
+        run: gh project close ${{ github.event.inputs.project-number }} --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: List Projects After Closing
+        run: gh project list --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
