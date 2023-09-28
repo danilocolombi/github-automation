@@ -29,6 +29,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [List](.github/workflows/project-list.yml)
 - [Create](.github/workflows/project-create.yml)
 - [Delete](.github/workflows/project-delete.yml)
+- [Close](.github/workflows/project-close.yml)
 
 ## Gists
 - [Create](.github/workflows/gist-create.yml)
