@@ -1,0 +1,24 @@
+name: Project - Create
+
+on: 
+  workflow_dispatch: 
+    inputs:
+      title:
+        description: 'Project Title'
+        required: true
+        default: 'My Project'
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Projects
+        run: gh project list --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+    
+      - name: Create Project
+        run: gh project create --owner @me --title "${{ github.event.inputs.title }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
