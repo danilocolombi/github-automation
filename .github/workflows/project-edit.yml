@@ -1,0 +1,50 @@
+name: Project - Edit
+
+on: 
+  workflow_dispatch: 
+    inputs:
+      number:
+        description: 'Project Number'
+        required: true
+        default: 1
+        type: number
+      title:
+        description: 'Project Title'
+        required: true
+        default: 'Test'
+      description:
+        description: 'Project Description'
+        required: true
+        default: 'Test'
+      visibility:
+        description: 'Visibility'
+        required: true
+        default: 'PUBLIC'
+        options:
+          - PUBLIC
+          - PRIVATE
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Projects Before Editing
+        run: gh project list --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+    
+      - name: Edit Project
+        run: |
+          gh project edit ${{ github.event.inputs.number }} \
+          --title "${{github.event.inputs.title}}" \
+          --description "${{ github.event.inputs.description }}" \
+          --visibility ${{ github.event.inputs.visibility }} \
+          --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: List Projects After Editing
+        run: gh project list --owner @me
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
