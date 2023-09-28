@@ -11,7 +11,7 @@ on:
 jobs:
   list:
     runs-on: ubuntu-latest
-    
+
     steps:   
       - name: List Projects
         run: gh project list --owner ${{ github.event.inputs.owner }}
