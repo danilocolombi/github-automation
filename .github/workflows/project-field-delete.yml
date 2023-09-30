@@ -1,0 +1,36 @@
+name: Project - Delete Field
+
+on:
+  workflow_dispatch:
+    inputs:
+      project-number:
+        description: 'Project Number'
+        required: true
+        default: 1
+        type: number
+      field-id:
+        description: 'Field Id'
+        required: true
+
+jobs:
+  delete-field:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Fields Before Deleting
+        run: gh project field-list ${{ github.event.inputs.project-number }} --owner "@me"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: Delete Field
+        run: |
+          gh project field-delete ${{ github.event.inputs.project-number }} \
+          --owner "@me" \
+          --id "${{ github.event.inputs.field-id }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: List Fields After Deleting
+        run: gh project field-list ${{ github.event.inputs.project-number }} --owner "@me"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
