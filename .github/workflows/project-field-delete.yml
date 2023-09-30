@@ -1,4 +1,4 @@
-name: Project - Delete Field
+name: Project - Field Delete
 
 on:
   workflow_dispatch:
@@ -23,10 +23,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
 
       - name: Delete Field
-        run: |
-          gh project field-delete ${{ github.event.inputs.project-number }} \
-          --owner "@me" \
-          --id "${{ github.event.inputs.field-id }}"
+        run: gh project field-delete ${{ github.event.inputs.project-number }} --id ${{ github.event.inputs.field-id }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
 
