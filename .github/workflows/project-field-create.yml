@@ -1,0 +1,47 @@
+name: Project - Create Field
+
+on:
+  workflow_dispatch:
+    inputs:
+      project-number:
+        description: 'Project Number'
+        required: true
+        default: 1
+        type: number
+      field-name:
+        description: 'Field Name'
+        required: true
+        default: 'Effort'
+      field-type:
+        description: 'Field Type'
+        required: true
+        default: 'NUMBER'
+        type: choice
+        options:
+          - TEXT
+          - NUMBER
+          - DATE
+
+jobs:
+  create-field:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Fields Before Creating
+        run: gh project field-list ${{ github.event.inputs.project-number }} --owner "@me"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: Create Field
+        run: |
+          gh project field-create ${{ github.event.inputs.project-number }} \
+          --owner "@me" \
+          --name "${{ github.event.inputs.field-name }}" \
+          --data-type "${{ github.event.inputs.field-type }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
+
+      - name: List Fields After Creating
+        run: gh project field-list ${{ github.event.inputs.project-number }} --owner "@me"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
