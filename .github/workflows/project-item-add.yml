@@ -1,0 +1,35 @@
+name: Project - Item Add
+
+on:
+  workflow_dispatch:
+    inputs:
+      project-number:
+        description: 'Project Number'
+        required: true
+        default: 1
+        type: number
+      item-url:
+        description: 'Item URL'
+        required: true
+        default: ''
+        type: string
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List Items Before Adding
+        run: gh project item-list ${{ github.event.inputs.project-number }} --owner "@me" --limit 100
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }
+
+      - name: Add Item
+        run: gh project item-add ${{ github.event.inputs.project-number }} --owner "@me" --url = ${{ github.event.inputs.item-url }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }
+          
+      - name: List Items After Adding
+        run: gh project item-list ${{ github.event.inputs.project-number }} --owner "@me" --limit 100
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
