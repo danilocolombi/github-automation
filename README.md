@@ -32,6 +32,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Close](.github/workflows/project-close.yml)
 - [Edit](.github/workflows/project-edit.yml)
 - [View](.github/workflows/project-view.yml)
+- [List Fields](.github/workflows/project-field-list.yml)
 - [Create Field](.github/workflows/project-field-create.yml)
 - [Delete Field](.github/workflows/project-field-delete.yml)
 
