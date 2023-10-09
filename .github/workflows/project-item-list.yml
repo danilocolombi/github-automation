@@ -1,4 +1,4 @@
-name: Project Item - List
+name: Project - Item List
 
 on:
   workflow_dispatch:
@@ -17,5 +17,5 @@ jobs:
       - name: List Items
         run: gh project item-list ${{ github.event.inputs.project-number}} --owner "@me" --limit 100
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
             
