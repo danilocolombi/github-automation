@@ -39,6 +39,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Item Add](.github/workflows/project-item-add.yml)
 - [Item Delete](.github/workflows/project-item-delete.yml)
 - [Item Archive](.github/workflows/project-item-archive.yml)
+- [Mark Template](.github/workflows/project-mark-template.yml)
 
 ## Gists
 - [Create](.github/workflows/gist-create.yml)

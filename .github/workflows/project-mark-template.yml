@@ -1,0 +1,20 @@
+name: Project - Mark Template
+
+on: 
+  workflow_dispatch:
+    inputs:
+      project-number:
+        description: 'Project Number'
+        required: true
+        default: '1'
+        type: number
+
+jobs:
+  mark-template:
+    runs-on: ubuntu-latest
+
+    steps:   
+      - name: Mark as Template
+        run: gh project mark-template ${{ github.event.inputs.project-number}} --owner "@me"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
