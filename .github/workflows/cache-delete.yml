@@ -1,0 +1,32 @@
+name: Cache - Delete
+
+on: 
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Repository Name'
+        default: 'danilocolombi/teste'
+        required: true
+      cache-id:
+        description: 'Cache Key'
+        default: 1
+        required: true
+        type: number
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Cache Before Deleting
+        run: 'gh cache list --repo ${{ github.event.inputs.repository}}'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    
+      - name: Delete Cache
+        run: 'gh cache delete ${{ github.event.inputs.cache-id }} --repo ${{ github.event.inputs.repository}}'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: List Cache After Deleting
+        run: 'gh cache list --repo ${{ github.event.inputs.repository}}'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
