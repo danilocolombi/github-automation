@@ -8,6 +8,11 @@ on:
         required: true
         default: 1
         type: number
+      undo:
+        description: 'Reopen'
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   Close:
@@ -20,7 +25,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
     
       - name: Close Project
-        run: gh project close ${{ github.event.inputs.project-number }} --owner @me
+        run: gh project close ${{ github.event.inputs.project-number }} --owner @me --undo=${{ github.event.inputs.undo }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN_CLASSIC }}
 
