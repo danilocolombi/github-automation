@@ -96,3 +96,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 
 ## Cache
 - [List](.github/workflows/cache-list.yml)
+- [Delete](.github/workflows/cache-delete.yml)
