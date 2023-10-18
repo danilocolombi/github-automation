@@ -10,6 +10,8 @@ on:
 
 jobs:
   list:
+    runs-on: ubuntu-latest
+
     steps:
       - name: List Codespaces
         if: ${{ github.event.inputs.repository == '' }}
