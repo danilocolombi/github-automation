@@ -14,6 +14,7 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Runs](#runs)
 - [Releases](#releases)
 - [Cache](#cache)
+- [Codespaces](#codespace)
 
 ## Repos
 - [Create](.github/workflows/repo-create.yml)
@@ -97,3 +98,6 @@ This repo contains a list of workflows to automate tasks in GitHub
 ## Cache
 - [List](.github/workflows/cache-list.yml)
 - [Delete](.github/workflows/cache-delete.yml)
+
+## Codespaces
+- [List](.github/workflows/codespace-list.yml)

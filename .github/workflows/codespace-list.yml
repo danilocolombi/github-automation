@@ -1,0 +1,24 @@
+name: Codespace - List
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Repository Name'
+        default: ''
+        required: false
+
+jobs:
+  list:
+    steps:
+      - name: List Codespaces
+        if: ${{ github.event.inputs.repository == '' }}
+        run: gh codespace list
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    
+      - name: List Codespaces By Repo
+        if: ${{ github.event.inputs.repository != '' }}
+        run: gh codespace list --repo ${{ github.event.inputs.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
