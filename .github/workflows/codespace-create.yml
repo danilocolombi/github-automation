@@ -1,0 +1,42 @@
+name: Codespace - Create
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Repository Name'
+        default: 'danilocolombi/teste'
+        required: true
+      displayName:
+        description: 'Display Name'
+        default: 'cloud-coding'
+        required: true
+      machine:
+        description: 'Machine Specifications'
+        default: 'basicLinux32gb'
+        required: true
+        type: choice
+        options:
+          - basicLinux32gb
+          - standardLinux32gb
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      REPO: ${{ github.event.inputs.repository }}
+
+    steps:    
+      - name: List Codespaces Before Creating
+        run: gh codespace list -r $REPO
+    
+      - name: Create Codespace
+        run: gh codespace create -r $REPO -b main -m $MACHINE -d $DISPLAY_NAME
+        env:         
+          DISPLAY_NAME: ${{ github.event.inputs.displayName }}
+          MACHINE: ${{ github.event.inputs.machine }}
+
+      - name: List Codespaces Before Creating
+        run: gh codespace list -r $REPO
