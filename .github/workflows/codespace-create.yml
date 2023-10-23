@@ -30,13 +30,13 @@ jobs:
 
     steps:    
       - name: List Codespaces Before Creating
-        run: gh codespace list -r $REPO
+        run: gh codespace list -R $REPO
     
       - name: Create Codespace
-        run: gh codespace create -r $REPO -b main -m $MACHINE -d $DISPLAY_NAME
+        run: gh codespace create -R $REPO -b main -m $MACHINE -d $DISPLAY_NAME
         env:         
           DISPLAY_NAME: ${{ github.event.inputs.displayName }}
           MACHINE: ${{ github.event.inputs.machine }}
 
-      - name: List Codespaces Before Creating
-        run: gh codespace list -r $REPO
+      - name: List Codespaces After Creating
+        run: gh codespace list -R $REPO
