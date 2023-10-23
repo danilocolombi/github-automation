@@ -1,0 +1,28 @@
+name: Codespace - Stop
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Codespace Name'
+        default: 'cloud-coding'
+        required: true
+
+jobs:
+  stop:
+    runs-on: ubuntu-latest
+
+    env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+    steps:
+      - name: List Codespaces Before Stopping
+        run: gh codespace list
+
+      - name: Stop Codespace
+        run: gh codespace stop -c $CODESPACE
+        env:
+          CODESPACE: ${{ github.event.inputs.name }}
+        
+      - name: List Codespaces After Stopping
+        run: gh codespace list
