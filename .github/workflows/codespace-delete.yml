@@ -1,0 +1,28 @@
+name: Codespace - Delete
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Codespace Name'
+        default: 'cloud-coding'
+        required: true
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+
+    env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+    steps:
+      - name: List Codespaces Before Deleting
+        run: gh codespace list
+
+      - name: Delete Codespace
+        run: gh codespace delete -c $CODESPACE
+        env:
+          CODESPACE: ${{ github.event.inputs.name }}
+        
+      - name: List Codespaces After Deleting
+        run: gh codespace list

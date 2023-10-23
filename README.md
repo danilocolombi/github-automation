@@ -102,3 +102,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 ## Codespaces
 - [List](.github/workflows/codespace-list.yml)
 - [Create](.github/workflows/codespace-create.yml)
+- [Delete](.github/workflows/codespace-delete.yml)
