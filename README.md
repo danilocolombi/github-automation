@@ -105,3 +105,4 @@ This repo contains a list of workflows to automate tasks in GitHub
 - [Delete](.github/workflows/codespace-delete.yml)
 - [Stop](.github/workflows/codespace-stop.yml)
 - [Edit](.github/workflows/codespace-edit.yml)
+- [Copy File](.github/workflows/codespace-cp-file.yml)

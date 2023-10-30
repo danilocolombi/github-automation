@@ -1,0 +1,34 @@
+name: Codespace - Copy File
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Codespace Name'
+        default: 'cloud-coding'
+        required: true
+      file-source:
+        description: 'File Source'
+        default: '.github/workflows/rename-repo.yml'
+        required: true
+      file-destination:
+        description: 'File Destination'
+        default: 'remote:/workspaces'
+        required: true
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: 'actions/checkout@v4'
+
+      - name: Copy File to Codespace
+        run: gh codespace cp -c $CODESPACE $FILE_SOURCE $FILE_DESTINATION
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          CODESPACE: ${{ github.event.inputs.name }}
+          FILE_SOURCE: ${{ github.event.inputs.file-source }}
+          FILE_DESTINATION: ${{ github.event.inputs.file-destination }}
+        
