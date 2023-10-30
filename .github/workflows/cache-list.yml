@@ -11,8 +11,11 @@ on:
 jobs:
   list:
     runs-on: ubuntu-latest
+
     steps:
       - name: List Cache
-        run: 'gh cache list --repo ${{ github.event.inputs.repository}}'
+        run: gh cache list --repo $REPO
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          REPO: ${{ github.event.inputs.repository }}
+          

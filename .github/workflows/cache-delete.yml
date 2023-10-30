@@ -12,21 +12,23 @@ on:
         default: 1
         required: true
         type: number
+
 jobs:
   delete:
     runs-on: ubuntu-latest
+
+    env:
+      REPO: ${{ github.event.inputs.repository }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
     steps:
       - name: List Cache Before Deleting
-        run: 'gh cache list --repo ${{ github.event.inputs.repository}}'
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: gh cache list -R $REPO
     
       - name: Delete Cache
-        run: 'gh cache delete ${{ github.event.inputs.cache-id }} --repo ${{ github.event.inputs.repository}}'
+        run: gh cache delete $CACHE_ID -R $REPO
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          CACHE_ID: ${{ github.event.inputs.cache-id }}
 
       - name: List Cache After Deleting
-        run: 'gh cache list --repo ${{ github.event.inputs.repository}}'
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: gh cache list -R $REPO

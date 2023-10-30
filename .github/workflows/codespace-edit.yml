@@ -1,0 +1,47 @@
+name: Codespace - Edit
+
+on:
+  workflow_dispatch:
+    inputs:
+      codespace:
+        description: 'Codespace Name'
+        default: ''
+        required: true
+      repository:
+        description: 'Repository Name'
+        default: 'danilocolombi/teste'
+        required: true
+      displayName:
+        description: 'New Display Name'
+        default: 'cloud-coding'
+        required: true
+      machine:
+        description: 'New Machine Specifications'
+        default: 'basicLinux32gb'
+        required: true
+        type: choice
+        options:
+          - basicLinux32gb
+          - standardLinux32gb
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      REPO: ${{ github.event.inputs.repository }}
+
+    steps:    
+      - name: List Codespaces Before Editing
+        run: gh codespace list -R $REPO
+    
+      - name: Edit Codespace
+        run: gh codespace edit -c $CODESPACE -R $REPO -b main -m $MACHINE -d $DISPLAY_NAME
+        env:         
+          DISPLAY_NAME: ${{ github.event.inputs.codespace }}
+          DISPLAY_NAME: ${{ github.event.inputs.displayName }}
+          MACHINE: ${{ github.event.inputs.machine }}
+
+      - name: List Codespaces After Editing
+        run: gh codespace list -R $REPO
