@@ -39,7 +39,7 @@ jobs:
       - name: Edit Codespace
         run: gh codespace edit -c $CODESPACE -R $REPO -b main -m $MACHINE -d $DISPLAY_NAME
         env:         
-          DISPLAY_NAME: ${{ github.event.inputs.codespace }}
+          CODESPACE: ${{ github.event.inputs.codespace }}
           DISPLAY_NAME: ${{ github.event.inputs.displayName }}
           MACHINE: ${{ github.event.inputs.machine }}
 
