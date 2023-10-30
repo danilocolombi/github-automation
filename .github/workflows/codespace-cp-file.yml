@@ -25,7 +25,7 @@ jobs:
         uses: 'actions/checkout@v4'
 
       - name: Copy File to Codespace
-        run: gh codespace cp -c $CODESPACE $FILE_SOURCE $FILE_DESTINATION
+        run: gh codespace cp -c $CODESPACE $FILE_SOURCE '$FILE_DESTINATION'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           CODESPACE: ${{ github.event.inputs.name }}
